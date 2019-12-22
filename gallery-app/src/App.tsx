@@ -7,6 +7,7 @@ import "./App.css";
 import { dataFromSearch } from "./scripts/weatherCaller";
 import InfoBox from "./elements/InfoBox";
 import ColorsPalType from "./types/ColorPalType";
+import ForecastStripType from "./types/ForecastStripType";
 
 // import getPaintLinkFromColors from "./scripts/paint-get";
 
@@ -20,7 +21,7 @@ const App: React.FC = () => {
     temprature: 0,
     main: "dummy",
     description: "dummy",
-    forecast: ([] as unknown) as ColorsPalType[]
+    forecast: ([] as unknown) as ForecastStripType
   };
 
   const [colors, updateColors] = useState(["24221f", "4b5f6d", "feb41c"]);
@@ -45,14 +46,18 @@ const App: React.FC = () => {
       <SearchBar onChange={handleSearchBar} />
       {weatherElement.id != 0 ? (
         <div className="resultFrame">
-          <span className="paintFrame">
-            <ColorsPal colors={colors}></ColorsPal>
-          </span>
-          <span>
-            <InfoBox weatherElement={weatherElement}></InfoBox>{" "}
-          </span>
+          <div className="mainResult">
+            <span className="paintFrame">
+              <ColorsPal colors={colors}></ColorsPal>
+            </span>
+            <span>
+              <InfoBox weatherElement={weatherElement}></InfoBox>{" "}
+            </span>
+          </div>
           <div>
-            <ForecastStrip forecast={weatherElement.forecast}></ForecastStrip>
+            <ForecastStrip
+              forecast={weatherElement.forecast.forecast}
+            ></ForecastStrip>
           </div>
         </div>
       ) : (

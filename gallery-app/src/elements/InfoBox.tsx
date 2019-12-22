@@ -12,7 +12,7 @@ const InfoBox: React.FC<InfoBox> = props => {
     <div>
       <ul className="infoBox">
         <li>
-          {temprature}
+          {Math.trunc(temprature)}
           {"\u00b0"}
         </li>
         <li>{city}</li>

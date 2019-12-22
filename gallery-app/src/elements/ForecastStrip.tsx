@@ -12,7 +12,7 @@ const ForcastStrip: React.FC<ForecastStripType> = props => {
   const { forecast } = props;
 
   return (
-    <div className="forcastPal">
+    <span className="forecastPal">
       {forecast.map(colorsPal => {
         return (
           <ColorsPal key={randomstring.generate(15)} colors={colorsPal.colors}>
@@ -20,7 +20,7 @@ const ForcastStrip: React.FC<ForecastStripType> = props => {
           </ColorsPal>
         );
       })}
-    </div>
+    </span>
   );
 };
 

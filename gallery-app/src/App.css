@@ -24,8 +24,20 @@
 }
 .resultFrame {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  border: solid blue;
 }
+.forecastPal {
+  display: flex;
+  flex-direction: row;
+  border: solid green 2px;
+}
+.mainResult {
+  display: flex;
+  flex-direction: row;
+  border: solid red;
+}
+
 .infoBox {
   list-style-type: none;
   display: flex;
@@ -35,14 +47,13 @@
 .colorPal {
   display: flex;
   flex-direction: column;
-  min-width: 50vh;
+
   /* border: dotted blue; */
 }
 
 .colorElement {
   /* border: solid red; */
   padding: 3vh;
-  border: solid white;
 }
 .App-link {
   color: #61dafb;

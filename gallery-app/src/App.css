@@ -1,9 +1,10 @@
 .App {
-  text-align: center;
   background-color: #d9f0fd;
+  height: 1000vh;
 }
 
 .search-bar {
+  text-align: center;
   font-family: Georgia, serif;
   font-style: bold;
   background-color: #d9f0fd;
@@ -41,34 +42,40 @@
   list-style-type: none;
 }
 
-.forecastPal {
-  display: flex;
-  flex-direction: row;
-  /* border: solid goldenrod; */
-}
-
 .colorPal {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  flex-basis: 100%;
+  flex-basis: 75%;
   /* border: dotted black; */
 }
 
 .colorElement {
   justify-content: space-evenly;
   padding: 1vh;
-  flex-grow: initial;
   flex-basis: 100%;
 }
 
 .forecastHeader {
   font-family: Candara;
   font-size: medium;
-
-  margin-bottom: -40;
   flex-basis: 100%;
 }
+.forecastFrame {
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  flex-direction: column;
+  /* border: solid blueviolet; */
+}
+.forecastPal {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-basis: 100%;
+  /* border: solid goldenrod; */
+}
+
 li {
   overflow: hidden;
   text-overflow: ellipsis;

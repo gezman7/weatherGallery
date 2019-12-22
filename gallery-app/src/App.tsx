@@ -37,22 +37,25 @@ const App: React.FC = () => {
       {weatherElement ? (
         <div className="resultFrame">
           <div className="mainResult">
-            <span className="paintFrame">
+            <div className="paintFrame">
               <ColorsPal colors={weatherElement.colors}></ColorsPal>
-            </span>
+            </div>
             <span>
               <InfoBox weatherElement={weatherElement}></InfoBox>{" "}
             </span>
           </div>
-          <span className="forecastHeader">The following days: </span>
-          <div>
-            <ForecastStrip
-              forecast={weatherElement.forecast.forecast}
-            ></ForecastStrip>
+          <div className="forecastFrame">
+            <span className="forecastHeader">The following days: </span>
+
+            <div>
+              <ForecastStrip
+                forecast={weatherElement.forecast.forecast}
+              ></ForecastStrip>
+            </div>
           </div>
         </div>
       ) : (
-        <div className="openMsg">Loading Weather Palette.</div>
+        <div className="openMsg">Loading Weather Palette...</div>
       )}
     </div>
   );

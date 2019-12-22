@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import ColorElement from "./ColorElement";
 import randomstring from "randomstring";
-type ColorsPal = {
-  colors: string[];
-};
-const ColorsPal: React.FC<ColorsPal> = props => {
+import ColorPalType from "../types/ColorPalType";
+
+const ColorsPal: React.FC<ColorPalType> = props => {
   const { colors } = props;
 
   return (

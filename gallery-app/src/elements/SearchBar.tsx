@@ -11,7 +11,7 @@ const SearchBar: React.FC<searchBar> = props => {
       <input
         className="search-bar"
         type="search"
-        placeholder="Paint the sky"
+        placeholder=""
         onKeyPress={e => {
           handleKeyPress(e);
         }}

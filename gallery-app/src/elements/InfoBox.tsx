@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import weatherData from "../types/types";
+import weatherData from "../types/weatherData";
 
 type InfoBox = {
   weatherElement: weatherData;

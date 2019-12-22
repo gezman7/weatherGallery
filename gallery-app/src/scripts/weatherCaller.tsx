@@ -1,18 +1,13 @@
 import axios from "axios";
-// import getPaintLinkFromColors from "./paint-get";
 import key from "../private/key";
-// private/key";
 import weatherData from "../types/weatherData";
-import ColorPal from "../elements/ColorsPal";
 import ColorPalType from "../types/ColorPalType";
-
 import ForecastStripType from "../types/ForecastStripType";
-import ColorsPal from "../elements/ColorsPal";
 
 export async function dataFromSearch(city: string) {
   const API_KEY = key;
-  const cityId = getIdFromCity(city);
-  console.log("cityId:" + cityId);
+  let cityId = getIdFromCity(city);
+
   const url = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&APPID=${API_KEY}&units=metric`;
 
   let weatherDataResponse;
@@ -20,27 +15,13 @@ export async function dataFromSearch(city: string) {
     .get(url)
     .then(response => {
       weatherDataResponse = response;
-      // weatherElement.id = response.data.list[0].weather[0].id;
-      // weatherElement.main = response.data.list[0].weather[0].main;
-      // weatherElement.description = response.data.list[0].weather[0].description;
-      // weatherElement.temprature = response.data.list[0].main.temp;
-
-      console.log("recevied data");
     })
     .catch(error => {
       console.log(error);
     });
 
   const weatherElement: weatherData = parseWeatherResponse(weatherDataResponse);
-  //  {
-  //   id: 0,
-  //   colors: [],
-  //   city: cityName,
-  //   temprature: 0,
-  //   main: "",
-  //   description: "",
-  //   forecast: []
-  // };
+
   weatherElement.colors = getColors(weatherElement.id);
   return weatherElement;
 }

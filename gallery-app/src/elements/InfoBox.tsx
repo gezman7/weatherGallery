@@ -9,17 +9,14 @@ const InfoBox: React.FC<InfoBox> = props => {
   const { id, temprature, city, main, description } = weatherElement;
 
   return (
-    <div>
-      <ul className="infoBox">
-        <li>
-          {Math.trunc(temprature)}
-          {"\u00b0"}
-        </li>
-        <li>{city}</li>
-        {/* <li>{main}</li> */}
-        <li>{description}</li>
-      </ul>
-    </div>
+    <ul className="infoBox">
+      <li>
+        {Math.trunc(temprature)}
+        {"\u00b0"}
+      </li>
+      <li>{city}</li>
+      <li>{description}</li>
+    </ul>
   );
 };
 

@@ -1,74 +1,76 @@
 .App {
   text-align: center;
+  background-color: #d9f0fd;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 .search-bar {
-  font-size: 6vh;
   font-family: Georgia, serif;
   font-style: bold;
-  height: 8vh;
+  background-color: #d9f0fd;
   font-weight: bold;
   color: black;
-
-  padding: -20;
+  margin-bottom: 5%;
 }
 .resultFrame {
   display: flex;
   flex-direction: column;
-  border: solid blue;
-}
-.forecastPal {
-  display: flex;
-  flex-direction: row;
-  border: solid green 2px;
+  align-items: stretch;
+  /* border: solid green; */
 }
 .mainResult {
   display: flex;
   flex-direction: row;
-  border: solid red;
+
+  justify-content: center;
+  align-content: stretch;
+  margin-bottom: 5%;
+  /* border: solid red; */
+}
+.paintFrame {
+  display: flex;
+  align-items: stretch;
+  /* border: dotted brown; */
+  flex-basis: 25%;
 }
 
 .infoBox {
+  display: inline-block;
+  text-align: start;
+  font-family: Candara;
+  font-size: large;
   list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
+
+.forecastPal {
+  display: flex;
+  flex-direction: row;
+  /* border: solid goldenrod; */
+}
+
 .colorPal {
   display: flex;
   flex-direction: column;
-
-  /* border: dotted blue; */
+  align-items: stretch;
+  flex-basis: 100%;
+  /* border: dotted black; */
 }
 
 .colorElement {
-  /* border: solid red; */
-  padding: 3vh;
-}
-.App-link {
-  color: #61dafb;
+  justify-content: space-evenly;
+  padding: 1vh;
+  flex-grow: initial;
+  flex-basis: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.forecastHeader {
+  font-family: Candara;
+  font-size: medium;
+
+  margin-bottom: -40;
+  flex-basis: 100%;
 }
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: black;
-  opacity: 1; /* Firefox */
+li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

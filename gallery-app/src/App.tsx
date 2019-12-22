@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "./elements/SearchBar";
 import ColorsPal from "./elements/ColorsPal";
 import weatherData from "./types/weatherData";
@@ -6,34 +6,24 @@ import ForecastStrip from "./elements/ForecastStrip";
 import "./App.css";
 import { dataFromSearch } from "./scripts/weatherCaller";
 import InfoBox from "./elements/InfoBox";
-import ColorsPalType from "./types/ColorPalType";
-import ForecastStripType from "./types/ForecastStripType";
+import STARTING_CITY from "./types/defaultVals";
 
 // import getPaintLinkFromColors from "./scripts/paint-get";
 
-//still a mess. need to handle the search bar, and render after every search.
 const App: React.FC = () => {
   //const [paint, changePaint] = useState("");
-  const startWeather: weatherData = {
-    id: 0,
-    colors: [],
-    city: "dummy",
-    temprature: 0,
-    main: "dummy",
-    description: "dummy",
-    forecast: ([] as unknown) as ForecastStripType
-  };
 
-  const [colors, updateColors] = useState(["24221f", "4b5f6d", "feb41c"]);
-  const [weatherElement, updateWeather] = useState(startWeather);
+  const [weatherElement, updateWeather] = useState();
 
-  function handleSearchBar(val: string) {
-    let searchDebounce = setTimeout(async () => {
-      const weatherReceiver: weatherData = await getWeather(val);
-      updateWeather(weatherReceiver);
-      updateColors(weatherReceiver.colors as []);
-      //getPaintLinkFromColors(colors[0], colors[1], colors[2]);
-    }, 2000);
+  useEffect(() => {
+    handleSearchBar(STARTING_CITY);
+  }, []);
+
+  async function handleSearchBar(val: string) {
+    const weatherReceiver: weatherData = await getWeather(val);
+    updateWeather(weatherReceiver);
+
+    //getPaintLinkFromColors(colors[0], colors[1], colors[2]);
   }
 
   async function getWeather(val: string) {
@@ -44,16 +34,17 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <SearchBar onChange={handleSearchBar} />
-      {weatherElement.id != 0 ? (
+      {weatherElement ? (
         <div className="resultFrame">
           <div className="mainResult">
             <span className="paintFrame">
-              <ColorsPal colors={colors}></ColorsPal>
+              <ColorsPal colors={weatherElement.colors}></ColorsPal>
             </span>
             <span>
               <InfoBox weatherElement={weatherElement}></InfoBox>{" "}
             </span>
           </div>
+          <span className="forecastHeader">The following days: </span>
           <div>
             <ForecastStrip
               forecast={weatherElement.forecast.forecast}
@@ -61,7 +52,7 @@ const App: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="openMsg">Weather palette.</div>
+        <div className="openMsg">Loading Weather Palette.</div>
       )}
     </div>
   );
